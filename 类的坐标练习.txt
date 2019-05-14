@@ -1,0 +1,25 @@
+//#include <iostream>
+//using namespace std ;
+//class Point {
+//	private:
+//		int x;
+//		int y;
+//	public:
+//		Point(){
+//			cout<<"请输入坐标:x,y"<<endl;
+//		}
+//		void output (){
+//			cin>>x>>y;
+//			cout<<x<<","<<y<<endl;
+//		}
+//		~Point(){
+//			x = 0;
+//			y = 0;
+//			cout<<"销毁坐标"<<endl;
+//		}
+//};
+//int main1 (){
+//	Point pot;
+//	pot.output ();	
+//	return 0  ;
+//}

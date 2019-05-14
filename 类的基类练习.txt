@@ -1,0 +1,54 @@
+#include <iostream>
+using namespace std ;
+class Animal {
+public:
+private:
+	int weigth;
+	int height;
+public:
+	Animal(){
+		cout<<"This is animals"<<endl;
+	}
+	virtual void Eat(){
+		cout<<"anmial eat"<<endl;
+	}
+	virtual void Breathe(){
+		cout<<"anmial breath"<<endl;
+	}
+	virtual void Sleep(){
+		cout<<"anmial Sleep"<<endl;
+	}
+	~Animal(){
+		cout<<"over"<<endl;
+	}
+};
+class Fish : public Animal{
+	public:
+		Fish(){
+			cout<<"This is a fish"<<endl; 
+		}
+		void Eat(){
+			cout<<"grass"<<endl;
+		}
+		void Breathe(){
+			cout<<"pop pop pop"<<endl;
+		}
+		void Sleep(){
+			cout<<"sleep"<<endl;
+		}
+		~Fish(){
+			 cout<<"fish deconstract";
+		}
+};
+int main (){
+	Animal *p_fish;
+	Fish fish;
+	p_fish = &fish;
+/*
+	fish.Eat ();
+	fish.breath ();
+	fish.Sleep ();*/
+	p_fish->Breathe ();
+
+	return 0;	
+}
