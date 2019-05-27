@@ -1,0 +1,31 @@
+﻿生成启动时间为 2019-5-27 15:39:36。
+     1>项目“E:\C语言编程文件\5.27C++\5.27C++\5.27C++.vcxproj”在节点 2 上(build 个目标)。
+     1>InitializeBuildStatus:
+         正在对“Debug\5.27C++.unsuccessfulbuild”执行 Touch 任务。
+       GenerateTargetFrameworkMonikerAttribute:
+       正在跳过目标“GenerateTargetFrameworkMonikerAttribute”，因为所有输出文件相对于输入文件而言都是最新的。
+       ClCompile:
+         所有输出均为最新。
+         所有输出均为最新。
+         所有输出均为最新。
+       CoreResGen:
+         没有相对于源文件而言已过期的资源。正在跳过资源生成操作。
+       ResourceCompile:
+         所有输出均为最新。
+       Link:
+         E:\VS2010\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\C语言编程文件\5.27C++\Debug\5.27C++.exe" /INCREMENTAL /NOLOGO /ASSEMBLYRESOURCE:Debug\My527C.Form1.resources /MANIFEST /ManifestFile:"Debug\5.27C++.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"E:\C语言编程文件\5.27C++\Debug\5.27C++.pdb" /ASSEMBLYDEBUG /SUBSYSTEM:WINDOWS /TLBID:1 /ENTRY:"main" /DYNAMICBASE /FIXED:NO /NXCOMPAT /MACHINE:X86 Debug\app.res
+         Debug\5.27C++.obj
+         Debug\AssemblyInfo.obj
+         Debug\stdafx.obj
+         "Debug\.NETFramework,Version=v4.0.AssemblyAttributes.obj"
+         5.27C++.vcxproj -> E:\C语言编程文件\5.27C++\Debug\5.27C++.exe
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"E:\C语言编程文件\5.27C++\Debug\5.27C++.exe;#1" /manifest Debug\5.27C++.exe.intermediate.manifest
+       FinalizeBuildStatus:
+         正在删除文件“Debug\5.27C++.unsuccessfulbuild”。
+         正在对“Debug\5.27C++.lastbuildstate”执行 Touch 任务。
+     1>已完成生成项目“E:\C语言编程文件\5.27C++\5.27C++\5.27C++.vcxproj”(build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:00.84
