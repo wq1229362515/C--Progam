@@ -1,7 +1,12 @@
 #include<iostream>
+#include"Test2.h"
 using namespace std;
+//using namespace N1;
 
 
+namespace N2 {
+	int  a = 2;
+}
 #if 0
 int main1(){
 
@@ -110,6 +115,7 @@ private:
 	int x;
 };
 #endif 
+#if 0
 class point {
 public:
 	point( int x11, int x12, int y11, int y12 ){
@@ -123,26 +129,10 @@ private:
 int length(point x){
 	return sqrt(abs(pow((x.y1-x.x1), 2) + pow((x.y2 - x.x2), 2)));
 }
+#endif 
+using namespace N2;
 int  main(){
-	point x(0,0,1,1);
-	cout << length(x) << endl;
-
-
-#if 0
-	Circle c(1.0);
-	c.show();
-	shape *s[] = { &c };
-	cout << total(s, 1) << endl;
-
-	int i;
-	int& j = i;
-	i = 10;
-	j = i + 1;
-#endif
-	/*
-	A x(5);
-	return 0;
-	*/
+	system("pause");
 }
 
 
