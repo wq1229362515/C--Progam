@@ -53,19 +53,71 @@ int main(){
 
 #endif 
 
-class Data {
+class Date {
 public:
-	Data(int _year = 1990, int _month = 1, int _day = 1)
+	Date(int _year = 1990, int _month = 1, int _day = 1)
 		:year(_year)
 		, month(_month)
 		, day(_day)
 		{}
-	bool operator==(const Data &d2){
+	bool operator==(const Date &d2){
 		//Data temp(d2);
 		return this->day == d2.day
 		&& this->month == d2.month
 		&& this->year == d2.year;
 	
+	}
+	Date& operator=(const Date &d2){
+		if (this != &d2){
+			this->day = d2.day;
+			this->year = d2.year;
+			this->month = d2.month;
+		}
+		return *this;
+	}
+	//前置加加
+	Date& operator++(){
+
+		
+		if (this->day == 30 && (this->month == 4 || this->month == 6 ||
+			this->month == 9 || this->month == 11)){
+			this->month++;
+			this->day = 1;
+		}
+		else if (this->day == 31){
+			this->month++;
+			this->day = 1;
+		}
+		else {
+			this->day++;
+		}
+		return *this;
+	}
+
+	//后置加加
+	Date& operator++(int){
+		Date temp(*this);
+		if (this->day == 30 && (this->month == 4 || this->month == 6 ||
+			this->month == 9 || this->month == 11)){
+			this->month++;
+			this->day = 1;
+		}
+		else if (this->day == 31){
+			this->month++;
+			this->day = 1;
+		}
+		else {
+			this->day++;
+		}
+		return temp;
+	}
+	Date& operator<<(const Date& d3){
+		cout << this->year << "," << this->month << ","
+			<< this->day;
+	}
+	Date& operator+=(int day){
+		this->day += day;
+		return *this;
 	}
 private:
 	//如果要进行判断的话那么就要放开权限了
@@ -81,17 +133,25 @@ private:
 		&& d1.year == d2.year;
 				
 }*/
+
 int  main(){
 
 	int  a = 10;
 	int  b = 10;
 	bool ret = (a == b);
 	//在普通的变量中都可以进行这样的赋值,但是在类中就是不可以的
-	Data d1(2002,2,2);
-	Data d2(d1);	// 完成的是一个拷贝函数
+	Date d1(2002,2,2);
+	Date d2(d1);	// 完成的是一个拷贝函数
 	//d1 == d2;   在类中进行这样的操作那么就是不行的,所以引入了运算符重载
 	//在本质上来也是一个特殊的函数,因为执行了一段代码,用来判断两个类是否是相等的
 	//当然我们也可以在可以直接定义一个函数,来对两个类来进行判断
 	cout << (d1 == d2) << endl;
+	Date d3(2019, 6, 30);
+	d1 = d3;
+	d3++;
+	++d1;
+	d3 += 30;
+
 	return 0;
+
 }
