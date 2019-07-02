@@ -1,4 +1,4 @@
-
+#if 0
 /*
 
 #include<iostream>
@@ -87,7 +87,7 @@ int  Add(const int * right, const int *left){
 	int temp = *right + *left;
 	return temp;
 }
-int main()
+int main1()
 {
 
 	int  temp = 10;
@@ -175,4 +175,4 @@ int main()
 
 	return 0;
 }
-
+#endif
