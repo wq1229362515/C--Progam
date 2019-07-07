@@ -1,2 +1,7 @@
 ﻿  main.cpp
+e:\c语言编程文件\c++文件\c++文件\main.cpp(158): warning C4244: “=”: 从“double”转换到“int”，可能丢失数据
+e:\c语言编程文件\c++文件\c++文件\main.cpp(161): warning C4244: “=”: 从“double”转换到“int”，可能丢失数据
+e:\c语言编程文件\c++文件\c++文件\main.cpp(166): warning C4244: “=”: 从“double”转换到“int”，可能丢失数据
+e:\c语言编程文件\c++文件\c++文件\main.cpp(167): warning C4244: “=”: 从“double”转换到“int”，可能丢失数据
+e:\c语言编程文件\c++文件\c++文件\main.cpp(168): warning C4244: “=”: 从“double”转换到“int”，可能丢失数据
   C++文件.vcxproj -> E:\C语言编程文件\C++文件\Debug\C++文件.exe
