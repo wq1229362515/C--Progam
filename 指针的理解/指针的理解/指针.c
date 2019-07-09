@@ -67,10 +67,43 @@ int find_char3(char **strs, char val){
 	}
 	return 0;
 }
+/*
+int b = 520;
+void Func1(int *str){
+	//*str = 10;
+	str = &b;
 
-void Func(char *str){
-	str = "123";
 }
+void Func2(int **str){
+	
+	*str = &b;
+
+}
+*/
+/*void swap(int left, int right){
+	int temp = left;
+	left = right;
+	right = temp;
+}*/
+int temp2 = 100;
+void swap(int* left, int* right){
+	int temp =*left;
+	*left = *right;
+	*right = temp;
+	left = &temp2;
+	*left = 500;
+}
+void change1(char *str2){
+	str2 = "11";
+
+	return;
+}
+void change2(char **str2){
+	*str2 = "11";
+
+	return;
+}
+
 int main(){
 #if 0 
 	/*
@@ -114,11 +147,31 @@ int main(){
 	return 0;
 #endif
 
+	/*
 	char *str = (char*)malloc(sizeof(char)*20);
 	str = "1";
 	Func(str);
 	printf("%s\n", str);
 
+	*/
+
+
+	/*int a = 100;
+	int *ptr = &a;
+	Func(ptr);
+	printf("%d", *ptr);
+	*/
+
+	int a = 1;
+	//Func2(ptr);
+
+	int b = 2;
+	//swap(a, b);
+	swap(&a, &b);
+
+	char *str1 = "1234";
+	change1(str1);
+	change2(&str1);
 	return 0;
 }
 
