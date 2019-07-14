@@ -230,14 +230,16 @@ int main() {
 
 */
 
-
+//---------------------------------------
+//插入字符串回文判断
+/*
 #include<iostream>
 #include<string>
 using namespace std;
 
 bool ReverseString(string C, int len) {
 	for (int i = 0; i<=(len/2); i++) {
-		if (C[i] == C[len - i]){
+		if (C[i] == C[len - i - 1]){
 			continue;
 		}
 		else {
@@ -261,15 +263,16 @@ int  main() {
 		if (count == 0) {
 			C = B + A;
 		}
-		else if (count == A.size() + 1) {
+		else if (count == A.size()) {
 			C = A + B;
 		}
 		//非特殊情况
 		else {
-			C = (A.begin(), A[count]);
+			C = A.substr(0,count);
 			auto ptr = A[count];
 			C += B;
-			C += ptr;
+			C += A.substr(count, A.size());
+			
 		}
 		if (ReverseString(C,C.size())){
 			ret++;
@@ -279,3 +282,408 @@ int  main() {
 	cout << ret << endl;
 	return 0;
 }
+*/
+
+/*
+#include<iostream>
+#include<vector>
+using namespace std;
+
+int main() {
+
+	long int n;
+	long int ret = 0;        //结果
+	cin >> n;
+	vector<int> arr(n);//定义数组
+	for (long int i = 0; i < n; i++) {
+		cin >> arr[i];
+	}
+	for (long int i = 0; i < n; i++) {
+		long int temp = 0;                       //存储的是暂存最大的数字
+		for (long int j = i; j<n; j++) {
+			temp += arr[j];
+			if (temp > ret){
+				ret = temp;
+			}
+		}
+	}
+	cout << ret << endl;
+	return 0;
+}
+*/
+/*
+#include<iostream>
+#include<string>
+using namespace std;
+
+
+class Solution {
+public:
+	int StrToInt(string str) {
+		if (str.size() == 0 ){
+			return 0;
+		}
+		int  ret = 0;
+		int temp;
+		int buf;
+		int len = 1;
+		if (str[0] == '+' || str[0] == '-'){
+			while (len != str.size()){
+				if (str[len] >= '0' && str[len] <= '9'){
+					temp = str[len] - '0';
+					buf = 1;
+					for (int i = len, j = 1; i < str.size(); j *= 10, i++){
+						if (i == str.size() - 1){
+							buf = j;
+						}
+					}
+					temp = temp*buf;
+					ret += temp;
+				}
+				else {
+					return 0;
+				}
+				len++;
+			}
+		}
+		else{
+			return 0;
+		}
+		if (str[0] == '+'){
+			return ret;
+		}
+		if (str[0] == '-'){
+			return -ret;
+		}
+		return 0;
+	}
+};
+
+int main() {
+
+
+
+	Solution A;
+	cout << A.StrToInt("") << endl;;
+	
+	Solution B;
+	cout << B.StrToInt("   -214747") << endl;
+
+	return 0;
+}
+
+*/
+
+//括号匹配
+/*
+#include<stack>
+#include<iostream>
+using namespace std;
+class Parenthesis {
+public:
+	bool chkParenthesis(string A, int n) {
+		if (n == 0){
+			return false;
+		}
+		stack<char> str;
+		int i = 0;
+		while (i <= A.size()) {
+			//先判断走进来的是不是右括号，并是不是空
+			if (A[i] == '}' || A[i] ==  ')' || A[i] ==  ']'){
+				if (str.empty()){
+					return false;
+				}
+				if (A[i] == '}' && str.top() == '{' ||
+					A[i] == ']' && str.top() == '[' ||
+					A[i] == ')' && str.top() == '('){
+					str.pop();
+					i++;
+					continue;
+				}
+				else return false;
+			}
+			if (A[i] == '{' || A[i] == '[' || A[i] == '('){
+				str.push(A[i]);
+			}
+			i++;
+		}
+		if (str.empty()){
+			return true;
+		}
+		else 
+		return false;
+	}
+};
+int main(){
+	int b = 1;
+	int i = (b++ == 2);
+	
+	string A("(())");
+	Parenthesis B;
+	int ret = B.chkParenthesis(A, 4);
+	cout << ret << endl;
+	
+	return 0;
+}
+*/
+
+//斐波那锲最短距离
+/*
+#include<iostream>
+using namespace std;
+int Fac(int i) {
+	if (i == 0) {
+		return 0;
+	}
+	if (i == 1) {
+		return 1;
+	}
+	if (i >= 2) {
+		return Fac(i - 1) + Fac(i - 2);
+	}
+}
+
+int main() {
+
+	int  N;
+	int ret1 = 0;
+	int temp = 0;
+	int ret2 = 0;
+	cin >> N;
+	//首先逼近那个最接近的数字,就在其左右
+	for (int i = 0;; i++) {
+		temp = ret1;
+		ret1 = Fac(i);
+		if (ret1 < N){
+			continue;
+		}
+		else {
+			ret2 = ret1;
+			ret1 = temp;
+			break;
+		}
+	}
+	if ((ret2 - N )> (-(ret1 - N))){
+		cout << N - ret1 << endl;
+	}
+	else {
+		cout << ret2 - N << endl;
+	}
+	return 0;
+}
+*/
+/*公倍数*/
+/*
+#include<iostream>
+using namespace std;
+class Problems{
+public:
+	int Fuc(int A, int B) {
+		for (int i = 1;; i++) {
+			if ((i%A == 0) && (i%B == 0)){
+				return i;
+			}
+		}
+		return 0;
+	}
+};
+int main(){
+	int A, B;
+	Problems C;
+	cin >> A;
+	cin >> B;
+	int ret = C.Fuc(A, B);
+	cout << ret << endl;
+	return 0;
+}
+*/
+/*
+#include<iostream>
+#include<string>
+#include<string.h>
+using namespace std;
+class problems {
+public:
+	int length(string str[], int  n){
+		for (int i = 0;i<n-1; i++) {
+			if (str[i].size() < str[i + 1].size()) {
+				continue;
+			}
+			else {
+				return 0;
+			}
+		}
+		return 1;
+	}
+	int  dirctory(string str[], int n){
+		for (int i = 0;i<n-1; i++) {
+			//大于的话返回的是正数
+			if (strcmp(str[i].c_str(),str[i+1].c_str()) < 0){
+				continue;
+			}
+			else {
+				return 0;
+			}
+		}
+		return 1;
+	}
+};
+
+int main() {
+
+	int n;
+	cin >> n;
+	string str[100];
+	int i = 0;
+	while (1){
+		if (i >= n){
+			break;
+		}
+		cin>>str[i++];
+	}
+	problems Test;
+	int ret1 = Test.length(str,n);
+	int ret2 = Test.dirctory(str,n);
+	if ((ret1 == 1) && (ret2 == 1)){
+		cout << "both" << endl;
+	}
+	if ((ret1 == 1) && (ret2 == 0)){
+		cout << "lengths" << endl;
+	}
+	if ((ret1 == 0) && (ret2 == 1)) {
+		cout << "lexicographically" << endl;
+	}
+	if ((ret1 == 0) &&(ret2 == 0)){
+		cout << "none" << endl;
+	}
+	return 0;
+}
+*/
+
+/*
+#include<iostream>
+using namespace std;
+
+class UnusualAdd {
+public:
+	int addAB(int A, int B) {
+		return    A + B;
+	}
+};
+int main(){
+	UnusualAdd Test;
+	cout << Test.addAB(2147483647, 21474836475) << endl;;
+}
+*/
+
+/*
+#include<iostream>
+using namespace  std;
+
+
+int main(){
+
+	int count = 0;
+	int num1;
+	int temp = 0;
+	cin >> num1;
+	while (1){
+		if (num1 == 0){
+			break;
+		}
+		if ((num1 & 1) == 1){
+			count++;
+			if (temp < count){
+				temp = count;
+			}
+		}
+		//不是一的时候说明断了
+		if ((num1 & 1) == 0){
+			count = 0;
+		}
+		num1 = num1 >> 1;
+	}
+	if (temp > count){
+		cout << temp << endl;
+	}
+	else 
+	cout << count << endl;
+	
+	return 0;
+}
+
+/*
+#include<iostream>
+#include<vector>
+using namespace std;
+
+int main()
+{
+	int n;
+	while (cin >> n)
+	{
+		vector<int> arr;
+		while (n)
+		{
+			if (n & 1)
+				arr.push_back(1);
+			else
+				arr.push_back(0);
+			n = n >> 1;
+		}
+		int count = 0;
+		int x = 0;
+		int max = 0;
+		for (int i = 0; i < arr.size(); ++i)
+		{
+			while (arr[i] == 1)
+			{
+				count++;
+				i++;
+				if (i == arr.size())
+					break;
+			}
+			if (count >= max)
+			{
+				max = count;
+				count = 0;
+			}
+
+		}
+		cout << max << endl;
+	}
+	return 0;
+}
+*/
+
+
+
+#include<iostream>
+
+using namespace std;
+
+int main(){
+
+
+	int A, B;
+	int fatherA, fatherB;
+	cin >> A >> B;
+	if (A % 2 == 0){
+		fatherA = A / 2;
+	}
+	else fatherA = (A - 1) / 2;
+	if (B % 2 == 0){
+		fatherB = B / 2;
+	}
+	else fatherB = (B - 1) / 2;
+
+
+
+
+
+	return 0;
+}
+
+
+
+
