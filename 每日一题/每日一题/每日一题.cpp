@@ -656,7 +656,7 @@ int main()
 }
 */
 
-
+/*
 
 #include<iostream>
 
@@ -686,4 +686,33 @@ int main(){
 
 
 
+*/
 
+#include<iostream>
+using namespace  std;
+class Soultion{
+public:
+	int findNumberof1(int num) {
+		int count = 0;
+		while (1){
+			if (num == 0){
+				break;
+			}
+			if ((num & 1) == 1) {
+				count++;
+			}
+			num = num >> 1;
+		}
+		cout << count << endl;
+		return 0;
+	}
+};
+
+
+int  main(){
+	Soultion Test;
+	int temp;
+	cin >> temp;
+	Test.findNumberof1(temp);
+	return 0;
+}
