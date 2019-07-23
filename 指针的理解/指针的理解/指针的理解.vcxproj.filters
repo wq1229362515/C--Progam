@@ -18,7 +18,7 @@
     <ClCompile Include="const关键字.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="指针.c">
+    <ClCompile Include="指针2.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

@@ -147,6 +147,7 @@ int main(){
 	return 0;
 #endif
 
+#if 0
 	/*
 	char *str = (char*)malloc(sizeof(char)*20);
 	str = "1";
@@ -175,3 +176,4 @@ int main(){
 	return 0;
 }
 
+#endif
