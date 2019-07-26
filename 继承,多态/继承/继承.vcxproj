@@ -80,6 +80,7 @@
   <ItemGroup>
     <ClCompile Include="多态的原理.cpp" />
     <ClCompile Include="多态的基本概念.cpp" />
+    <ClCompile Include="类中的静态成员,赋值运算符为什么返回引用.cpp" />
     <ClCompile Include="继承的基本属性.cpp" />
     <ClCompile Include="继承的默认成员函数.cpp" />
     <ClCompile Include="菱形继承问题.cpp" />

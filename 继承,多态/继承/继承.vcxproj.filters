@@ -30,5 +30,8 @@
     <ClCompile Include="多态的原理.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="类中的静态成员,赋值运算符为什么返回引用.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
