@@ -18,7 +18,16 @@
     <ClCompile Include="const关键字.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="指针2.cpp">
+    <ClCompile Include="一二级指针传参数的问题.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="函数指针,数组.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="typedef,字符串.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="指针的零碎知识点.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

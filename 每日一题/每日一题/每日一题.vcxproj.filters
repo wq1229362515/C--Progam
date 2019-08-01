@@ -18,5 +18,8 @@
     <ClCompile Include="每日一题.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="每日一题笔记.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

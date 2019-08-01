@@ -79,7 +79,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="const关键字.cpp" />
-    <ClCompile Include="指针2.cpp" />
+    <ClCompile Include="typedef,字符串.c" />
+    <ClCompile Include="一二级指针传参数的问题.c" />
+    <ClCompile Include="函数指针,数组.cpp" />
+    <ClCompile Include="指针的零碎知识点.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

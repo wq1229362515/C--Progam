@@ -1,3 +1,6 @@
+#include<string>
+#include<iostream>
+using namespace std;
 #if 0
 /*倒叙字符串*/
 #include<string>
@@ -687,32 +690,520 @@ int main(){
 
 
 */
-
+#if 0
+//水平值求和,贪心算法,每次取第二大的数字
+//3*n-2 3*n-4 ....一直到n
 #include<iostream>
-using namespace  std;
-class Soultion{
-public:
-	int findNumberof1(int num) {
-		int count = 0;
-		while (1){
-			if (num == 0){
-				break;
-			}
-			if ((num & 1) == 1) {
-				count++;
-			}
-			num = num >> 1;
+#include<vector>
+#include<algorithm> 
+using namespace std;
+
+int main() {
+
+	int n;
+	while (cin >> n) {
+		long long sum = 0;
+		vector<int> arr;
+		arr.resize(3 * n);
+		for (int i = 0; i < (3 * n); ++i) {
+			cin >> arr[i];
 		}
-		cout << count << endl;
-		return 0;
+		//排序算法,排出来之后,才可以进行操作,
+		sort(arr.begin(), arr.end());
+		for (int i = n; i <= 3 * n - 2; i += 2){
+			sum += arr[i];
+		}
+		cout << sum << endl;
+	}
+	return 0;
+}
+
+
+#include<string>
+#include<iostream>
+using namespace std;
+//建立一个映射表这样可以方便的对照,相比较暴力的循环搜索O(N^2)这个算法为O(1)
+int main(){
+
+	string str1, str2;
+	getline(cin, str1);
+	getline(cin, str2);
+	int hastable[256] = { 0 };
+	//先要统计str2 中的字符
+	for (int i = 0; i < str2.size(); ++i){
+		hastable[str2[i]]++;
+	}
+	string ret;
+	for (int i = 0; i < str1.size(); ++i){
+		if (hastable[str1[i]] == 0) {
+			//如果等于0了说明了str1中没有这个字符
+			ret += str1[i];
+		}
+	}
+	cout << ret << endl;
+
+
+	return 0;
+}
+
+
+////先进行整个句子翻转
+//整个句子翻转之后, 对单个单词进行翻转
+//i like beijing.
+//gnijieb ekil i.
+//beijing like i.
+#include<iostream>
+#include<string>
+#include<algorithm>
+using namespace std;
+
+
+int main(){
+
+	string str1;
+	getline(cin, str1);
+	auto begin = str1.begin();
+	//fan zhuan juzi 
+	reverse(str1.begin(), str1.end());
+	while (begin != str1.end()){
+		//fanzhuan danci 
+		auto end = begin;
+		while (end != str1.end() && *end != ' ')
+			end++;
+		reverse(begin, end);
+		if (end != str1.end())
+			begin = end + 1;
+		else
+			begin = end;
+	}
+	cout << str1 << endl;
+
+
+	return 0;
+}
+
+
+#endif
+#if 0
+#include <iostream>       
+#include <vector> 
+using namespace std;
+int main(void) {
+	vector<int>array;
+	array.push_back(100);
+	//array.push_back(300);
+	array.push_back(300);
+	//array.push_back(300);
+	array.push_back(300);
+	array.push_back(500);
+	vector<int>::iterator itor;
+	for (itor = array.begin(); itor != array.end(); itor++)
+	{
+		if (*itor == 300)
+		{
+			itor = array.erase(itor);
+			//erase 会返回下一个元素的指针,再加上itor++
+		}
+	}
+	for (itor = array.begin(); itor != array.end(); itor++)
+	{
+		cout << *itor << "";
+	}
+	return 0;
+}
+
+
+
+
+#include<string>
+#include<iostream>
+using namespace std;
+int main(){
+
+	
+	string str1, num1, ret;
+	cin >> str1;
+	
+	for (int i = 0; i < str1.length(); ++i){
+		if (str1[i] >= '0' && str1[i] <= '9'){
+			num1 += str1[i];
+		}
+		if (num1.size() > ret.size())
+			ret = num1;
+		else
+			num1.clear();
+	}
+
+
+	return 0;
+}
+
+
+/*
+
+需要找出出现次数超过一半的那个数字
+
+1.快速排序 那个中间的数必定是那个要找的数字
+2.如果有符合条件的数字，则它出现的次数比其他所有数字出现的次数和还要多。
+在遍历数组时保存两个值： 一是数组中一个数字，一是次数。
+遍历下一个数字时，若它与之前保存的数字相同，则次数加1，否则次数减 1；
+若次数为0，则保存下一个数字，并将次数置为1。遍历结束后，所保存的数字即为所求。
+然后再判断它 是否符合条件即可
+*/
+class Solution {
+public:
+	int MoreThanHalfNum_Solution(vector<int> numbers) {
+		int count = 1;
+		int num = numbers[0];
+
+		for (int i = 0; i <= numbers.size(); ++i){
+			if (count == 0){
+				num = numbers[i];
+				count = 1;
+			}
+			else {
+				if (numbers[i] == num)
+					count += 1;
+				else
+					count -= 1;
+			}
+		}
+
+		count = 0;
+		for (int i = 0; i <= numbers.size(); ++i){
+			if (numbers[i] == num) count++;
+		}
+		return (count > numbers.size() / 2) ? num : 0;
 	}
 };
 
+#endif
 
-int  main(){
-	Soultion Test;
-	int temp;
-	cin >> temp;
-	Test.findNumberof1(temp);
+#if 0
+int main(){
+	int a[5] = { 1, 3, 5, 7, 9 };
+	//&a+1 也就是取到了指向a的下一个地址p-1就是上一个元素
+	int *p = (int *)(&a + 1);
+	printf("%d, %d", *(a + 1),*(p - 1));
+}
+
+
+//对于进制转换来说需要一个符号表,转换下来的进制需要倒叙输出,那么reverse即可
+#include<string>
+#include<algorithm>
+#include<iostream>
+using namespace std;
+
+int main(){
+
+
+	string ret, table = "0123456789ABCDEF";
+	int m, n;
+	int flag = 0;
+	cin >> m >> n;
+	if (m < 0){
+		flag = -1;
+		m = 0 - m;
+	}
+	while (m){
+		ret += table[m%n];
+		m /= n;
+	}
+
+	if (flag == -1)
+		ret += '-';
+	reverse(ret.begin(), ret.end());
+	cout << ret << endl;
+
+	return 0;
+}
+#endif
+
+//死循环
+//int main(){
+//	int x = 1; do{ printf("%2d\n", x++); } while (x--);
+//}
+#if 0
+
+#include<iostream>
+using namespace std; 
+class B0 {
+public:
+	virtual void display() {
+		cout << "B0::display0" << endl;
+	}
+};
+class D1:public B0  {
+public:
+	void display() {
+		cout << "D1::display0" << endl;
+	}
+};
+class B1:public D1  {
+public:
+	void display() {
+		cout << "B1::display0" << endl;
+	}
+};
+
+/*
+
+	必须通过基类的对象或者引用来调用这个虚函数
+
+*/
+void  Func(B0& ptr) {
+	ptr.display();
+}
+
+int main(){
+
+
+
+	return 0;
+}
+
+
+/*插入回文的问题,使用暴力求解法就可以解决*/
+#include<iostream>
+#include<string>
+using namespace std;
+
+bool IFText(const  string & str) {
+	if (str.empty() == 1)
+		return false;
+
+	size_t begin = 0;
+	size_t end = str.size() - 1;
+	while (begin < end){
+
+		if (str[begin] != str[end])
+			return false;
+
+		begin++;
+		end--;
+	}
+	return true;
+}
+int main(){
+
+	string str1, str2;
+	getline(cin, str1);
+	getline(cin, str2);
+	int count = 0;
+	//cha ru 
+	for (int i = 0; i <= str1.size(); ++i){
+
+		string str = str1;
+		str.insert(i, str2);
+		if (IFText(str) == true)
+			count++;
+
+	}
+	cout << count << endl;
+
+
+	return 0;
+}
+#endif
+
+/*
+	对于转换字符串为整数,需要将正负号给摘出来,利用string就可以摘出来
+	然后每次过来加法的是
+	123
+
+	1
+	1 * 10 +2;
+	12* 10 +3
+	sum = sum*10 +str[i] - '0';
+
+*/
+
+#if 0
+#include<string>
+#include<iostream>
+using namespace std;
+
+class Solution {
+public:
+	int StrToInt(string str) {
+		if (str.empty() == 1)
+			return 0;
+		int symbal = 1;
+		if (str[0] == '+'){
+			str[0] = '0';
+			symbal = 1;
+		}
+		if (str[0] == '-'){
+			str[0] = '0';
+			symbal = -1;
+		}
+
+		int  sum = 0;
+		for (int i = 0; i < str.size(); ++i) {
+			if (str[i] < '0' || str[i] > '9'){
+				sum = 0;
+				break;
+			}
+			sum = sum * 10 + str[i] - '0';
+		}
+		return symbal*sum;
+	}
+};
+#endif
+
+
+
+/*
+
+不断的去逼近这个数字
+
+*/
+#if 0
+#include<iostream>
+#include<algorithm>
+using namespace std;
+
+int main() {
+
+	int ret, f0 = 0, f1 = 1, left = 0, right = 0;
+	int  N;
+	cin >> N;
+
+	while (1) {
+
+		//找出那个离他们最近的那个fac数
+		ret = f0 + f1;
+		f0 = f1;
+		f1 = ret;
+		
+
+		//每次循环进来都会来判断是否逼近了这个数
+
+		if (ret < N)
+			right = N - ret;
+		else{
+			left = ret - N;
+			break;
+		}
+
+	}
+	cout << min(right, left) << endl;
+
+	return 0;
+}
+#endif
+
+
+#include<stack>
+class Parenthesis {
+public:
+	bool chkParenthesis(string A, int n) {
+		// write code here
+		if (A.empty())
+			return false;
+
+		stack <char> _stack;
+		for (auto chr : A)
+			switch (chr) {
+			case '(':
+				_stack.push(chr);
+				break;
+
+			case ')':
+			{
+						if (_stack.empty() == 1 || _stack.top() != '(')
+							return false;
+						else
+							_stack.pop();
+			}
+				break;
+			default: return false;
+		}
+		return true;
+	}
+
+
+	bool chkParenthesis2(string A, int n){
+		if (n == 0)
+			return false;
+		stack <char> _stack;
+		int i = 0;
+		while (i < A.size()){
+			if (A[i] == ')'){
+				if (_stack.empty() == 1 || _stack.top() != '(')
+					return false;
+				else
+					_stack.pop();
+				i++;
+				continue;
+			}
+			if (A[i] == '('){
+				_stack.push(A[i]);
+				i++;
+				continue;
+			}
+			if (A[i] != '(' || A[i] != ')')
+				return false;
+		}
+		if (_stack.empty())
+			return true;
+		return false;
+	}
+};
+
+int main(){
+
+
+
+	Parenthesis test;
+	cout << test.chkParenthesis2("()d()(((())))", 12) << endl;
+
+}
+
+
+/*
+	分开判断
+	巧妙之处在于将vector 里面是string合为了
+	构成了一个字符串数组
+	直接比较就可以,不用用strcmp来比较
+
+*/
+#include<iostream>
+#include<string>
+#include<vector>
+using namespace std;
+
+int main() {
+
+
+	int n;
+	cin >> n;
+	vector<string> str;
+	str.resize(n);
+	for (auto& _str : str)
+		cin >> _str;
+
+	//size panduan
+	bool size = true;  bool directory = true;
+	for (int i = 1; i< str.size(); ++i){
+		if (str[i - 1].size() > str[i].size()){
+			size = false;
+			break;
+		}
+	}
+	for (int i = 1; i< str.size(); ++i) {
+		if (str[i - 1] > str[i]){
+			directory = false;
+			break;
+		}
+	}
+	if (size && directory)
+		cout << "both" << endl;
+	if (!size && directory)
+		cout << "lexicographically" << endl;
+	if (size && !directory)
+		cout << "lengths" << endl;
+	if (!size && !directory)
+		cout << "none" << endl;
 	return 0;
 }
