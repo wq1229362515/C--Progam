@@ -1094,6 +1094,7 @@ int main() {
 #endif
 
 
+#if  0
 #include<stack>
 class Parenthesis {
 public:
@@ -1205,5 +1206,157 @@ int main() {
 		cout << "lengths" << endl;
 	if (!size && !directory)
 		cout << "none" << endl;
+	return 0;
+}
+#endif
+
+
+#if 0
+int main(){
+
+	const string table = "0123456789ABCDEF";
+	string ret;
+	size_t  n;
+	while (cin >> n)
+		if (n < table.size())
+			ret += table[n];
+	cout <<"Your hex number is :"<< ret << endl;
+	return 0;
+	
+}
+#endif
+
+#if 0 
+class Test{ public:    int a;    int b;    virtual void fun() {}    Test(int temp1 = 0, int temp2 = 0)    { a = temp1;        b = temp2; }    int getA()     { return a; }    int getB()     { return b; } };
+
+int main(){
+
+	Test a;
+
+	//a 的首地址里面并不是a里面的变量成员.
+}
+
+#endif
+
+
+
+#include<string>
+#include<iostream>
+#include<assert.h>
+using namespace std;
+
+
+
+class Solutions {
+
+public:
+
+	int legngths(const string str){
+		if (str.empty())
+			assert(1);
+
+		if (str.size() <= 4)
+			return 5;
+		if (str.size() >= 8)
+			return 25;
+		if (5 <= str.size() && str.size() >= 7)
+			return 10;
+	}
+
+	int word(const string str) {
+		if (str.empty())
+			assert(1);
+
+		int big = 0, small = 0;
+		for (int i = 0; i < str.size(); ++i){
+			if (isupper(str[i]))
+				++big;
+			if (islower(str[i]))
+				++small;
+		}
+		if ((big + small) == 0)
+			return 0;
+		else if (big + small == str.size())
+			return 10;
+		else return 20;
+	}
+
+	int num(const string str) {
+		if (str.empty())
+			assert(1);
+		int num = 0;
+		for (int i = 0; i < str.size(); ++i){
+			if (isdigit(str[i]))
+				++num;
+		}
+		if (num == 0)
+			return 0;
+		else if (num == 1)
+			return 10;
+		else return 20;
+	}
+	int symbal(const string str){
+		int num = 0;
+		for (int i = 0; i < str.size(); i++){
+			if (!(str[i] >= 65 && str[i] <= 90)
+				&& !(str[i] >= 97 && str[i] <= 122)
+				&& !(str[i] - '0' >= 0 && str[i] - '0' <= 9))
+				num++;
+		}
+		if (num == 0)
+			return 0;
+		else if (num == 1)
+			return 10;
+		else
+			return 25;
+	}
+
+	int other(int word, int num, int symbal){
+		if (word == 25 && num && symbal)
+			return 5;
+		else if (word == 10 && num && symbal)
+			return 3;
+		else if (word == 10 && num)
+			return 2;
+
+		else return 0;
+	}
+	int Sum(int word, int length, int other, int symbal, int num){
+		return symbal + word + length + other + num;
+	}
+
+};
+
+
+int main() {
+
+	Solutions test;
+	string str;
+	getline(cin, str);
+	int word = 0, length = 0, others = 0, symbal = 0, num = 0;
+	length = test.legngths(str);
+	word = test.word(str);
+	symbal = test.symbal(str);
+	num = test.num(str);
+	others = test.other(word, num, symbal);
+
+	int ret = test.Sum(word, length, others, symbal, num);
+
+	if (ret >= 90)
+		cout << "VERY_SECURE" << endl;
+	else if (ret >= 80 && ret < 90)
+		cout << "SECURE" << endl;
+	else if (ret >= 70 && ret < 80)
+		cout << "VERY_STRONG" << endl;
+	else if (ret >= 60 && ret < 70)
+		cout << "STRONG" << endl;
+	else if (ret >= 50 && ret < 60)
+		cout << "AVERAGE" << endl;
+	else if (ret >= 25 && ret < 50)
+		cout << "WEAK" << endl;
+	else
+		cout << "VERY_WEAK" << endl;
+
+
 	return 0;
 }
