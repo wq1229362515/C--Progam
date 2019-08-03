@@ -1239,7 +1239,12 @@ int main(){
 #endif
 
 
+#if 0
+/*
+	密码安全强度问题
 
+
+*/
 #include<string>
 #include<iostream>
 #include<assert.h>
@@ -1356,6 +1361,140 @@ int main() {
 		cout << "WEAK" << endl;
 	else
 		cout << "VERY_WEAK" << endl;
+
+
+	return 0;
+}
+#endif
+
+
+#if 0
+
+/*/
+virtual 函数是动态绑定，而缺省参数值却是静态绑定。 意思是你可能会 在“调用一个定义于派生类内的virtual函数”的同时，
+却使用基类为它所指定的缺省参数值。
+结论：绝不重新定义继承而来的缺省参数值！（可参考《Effective C++》条款37）
+对于本例：
+B*p = newB;
+
+p->test();
+p->test()执行过程理解：
+(1) 由于B类中没有覆盖（重写）基类中的虚函数test()，因此会调用基类A中的test()；
+(2) A中test()函数中继续调用虚函数 fun()，因为虚函数执行动态绑定，
+p此时的动态类型（即目前所指对象的类型）为B*，因此此时调用虚函数fun()时，执行的是B类中的fun()；所以先输出“B->”；
+(3) 缺省参数值是静态绑定，即此时val的值使用的是基类A中的缺省参数值，其值在编译阶段已经绑定，值为1，所以输出“1”；
+最终输出“B->1”。所以大家还是记住上述结论：绝不重新定义继承而来的缺省参数值！
+*/
+class A {
+public:
+	virtual void func(int val = 1)    {
+		std::cout << "A->" << val << std::endl;
+	}
+	virtual void test(){
+		func();
+	}
+};
+class B : public A {
+public:
+	void func(int val = 0)
+	{
+		std::cout << "B->" << val << std::endl;
+	}
+};
+int main(int argc, char* argv[]) {
+	B*p = new B;
+	p->test();
+	return 0;
+}
+
+
+/*
+	求两个节点共同最近的父节点
+	特性 :root = child / 2;
+
+	两个不断相除,相等了那么就是最后的结果,如果一个比另外一个大就先进行除法运算,
+	再两数字进行比较
+
+*/
+class LCA {
+public:
+	int getLCA(int a, int b) {
+		// write code here
+
+		while (a != b){
+			if (a > b)
+				a /= 2;
+			if (a < b)
+				b /= 2;
+		}
+		return a;
+
+	}
+};
+
+#endif
+
+
+#if 0
+void func(const int& v1, const int& v2) { std::cout << v1 << ' ';    std::cout << v2 << ' '; }
+
+#include<algorithm>
+int main() {
+	/*
+	int n;
+	cin >> n;
+	int count = 0, tempcount = 0;
+
+		while (n){
+			if (n & 1){
+				++tempcount;
+				count = max(count, tempcount);
+			}
+			else
+				tempcount = 0;
+			n = n >> 1;
+		
+	}
+	cout << count << endl;
+	*/
+
+	int i = 0;
+	func(++i, i++);
+
+
+	return 0;
+}
+
+#endif
+
+
+#include<iostream>
+using namespace std;
+
+
+int  main() {
+
+	/*
+	int array[12] = { 0,31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334 };
+
+	int year = 0, month = 0, day = 0;
+	int sum = 0;
+	cin >> year;
+	cin >> month;
+	cin >> day;
+
+		sum += array[month - 1];
+		sum += day;
+
+		if ((year % 4 == 0 && year % 100 != 0)
+			|| year % 400 == 0)
+			sum += 1;
+		cout << sum << endl;
+		*/
+
+
+	char str1[] = "ABCD";
+	char str2[] = {' A',' B',' C', 'D' };
 
 
 	return 0;
