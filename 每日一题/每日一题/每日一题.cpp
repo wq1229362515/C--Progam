@@ -1468,6 +1468,7 @@ int main() {
 #endif
 
 
+#if 0
 #include<iostream>
 using namespace std;
 
@@ -1495,6 +1496,108 @@ int  main() {
 
 	char str1[] = "ABCD";
 	char str2[] = {' A',' B',' C', 'D' };
+
+
+	return 0;
+}
+
+
+#endif
+
+
+#if 0
+void print(char *s)
+{
+	static int i = 0;
+	if (*s)
+	{
+		print(++s);
+		//++s 已经改变了s的值所以s的值已经是指向下一个元素了
+
+		printf("%c %d ", *s);
+	}
+}
+
+int Func(char x[14]){
+
+	return 0;
+}
+int main(){ 
+	//char str[] = "Geneius";  
+
+
+	const int a = 10;
+	int *ptr = (int *)&a;
+	*ptr = 20;
+	cout << a << *ptr << endl;
+
+	char str[10];
+	Func(str);
+
+
+	char *p = "abc"; 
+	char *q = "abc123"; 
+	//字符串的常量没办法赋值的
+	while (*p = *q) 
+		printf("%c %c",*p, *q);
+
+	//print(str); 
+}  
+
+#endif
+
+
+#if 0
+int f(int n)
+{
+	static int i = 1;
+	if (n >= 5)
+		return n;
+	n = n + i;
+	i++;
+	return f(n);
+}
+
+int main(){
+
+	cout<<f(1);
+}
+#endif
+#if 0
+int main() {
+	char a[] = "programming", b[] = "language";
+	char *p1, *p2;
+	int i;
+	p1 = a, p2 = b;
+	for (i = 0; i < 7; i++)
+	if (*(p1 + i) == *(p2 + i))
+		printf("%c", *(p1 + i));
+}
+
+#endif
+
+
+#include<iostream>
+using namespace std;
+
+
+int main(){
+
+	int mouth;
+	int first = 1, second = 1, sum = 0;
+	cin >> mouth;
+
+		for (int i = 3; i <= mouth; ++i)
+		{
+			sum = first + second;
+			first = second;
+			second = sum;
+			
+		}
+		cout << sum << endl;
+
+	
+
 
 
 	return 0;
