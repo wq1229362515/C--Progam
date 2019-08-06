@@ -1,0 +1,3 @@
+﻿  源.cpp
+e:\c语言编程文件\6.5test\6.5test\源.cpp(6): warning C4101: “ret”: 未引用的局部变量
+  6.5Test.vcxproj -> E:\C语言编程文件\6.5Test\Debug\6.5Test.exe

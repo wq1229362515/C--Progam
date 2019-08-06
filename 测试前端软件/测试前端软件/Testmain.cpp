@@ -171,7 +171,9 @@ public:
 	//捕获一些消息:duilib 自己在里面封装的消息
 	virtual void  Notify(TNotifyUI& msg){
 		if (msg.sType == _T("click")){
-			MessageBox(NULL,_T("Test"),_T("cashier"),IDOK);
+			if (msg.pSender->GetName() == _T("btnHello")){
+				::MessageBox(NULL,_T("来给出你的答案"),_T("今日青年"),NULL);
+			}
 		}
 	}
 
@@ -182,22 +184,29 @@ public:
 
 		if (uMsg == WM_CREATE)
 		{
-			//按钮的控件 
-			CControlUI *pWnd = new CButtonUI;
-			pWnd->SetText(_T("Hello World"));   // 设置文字
-			pWnd->SetBkColor(0xFF00FF00);       // 设置背景色
-
 			m_PaintManager.Init(m_hWnd);
-			m_PaintManager.AttachDialog(pWnd);
-			return lRes;
+
+			CDialogBuilder builder;
+			CControlUI* pRoot = builder.Create(_T("duilib.xml"), (UINT)0, NULL, &m_PaintManager);   // duilib.xml需要放到exe目录下
+			ASSERT(pRoot && "Failed to parse XML");
+
+			m_PaintManager.AttachDialog(pRoot);
+			m_PaintManager.AddNotifier(this);   // 添加控件等消息响应，这样消息就会传达到duilib的消息循环，我们可以在Notify函数里做消息处理
+
 		}
-		//自己拦截弹出窗口,关闭了窗口
-		else if (uMsg == WM_CLOSE){
-			//win32 下通过messagebox 弹框测试
-			MessageBox(NULL,_T("TestCloseBTN"),_T("ss"),IDOK);
-			Close();
-			return lRes;
+		
+		else if (uMsg == WM_NCACTIVATE){
+			if (!::IsIconic(m_hWnd))
+				return (wParam == 0) ? TRUE : FALSE;
 		}
+		else if (uMsg == WM_NCCALCSIZE){
+			return 0;
+		}
+		else if (uMsg == WM_NCPAINT){
+			return 0;
+		}
+
+
 
 		if (m_PaintManager.MessageHandler(uMsg, wParam, lParam, lRes))
 		{
@@ -214,9 +223,11 @@ protected:
 int APIENTRY _tWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLine, int nCmdShow)
 {
 	CPaintManagerUI::SetInstance(hInstance);
+	CPaintManagerUI::SetResourcePath(CPaintManagerUI::GetInstancePath());
 
 	CDuiFrameWnd duiFrame;
 	duiFrame.Create(NULL, _T("DUIWnd"), UI_WNDSTYLE_FRAME, WS_EX_WINDOWEDGE);
+	duiFrame.CenterWindow();
 	duiFrame.ShowModal();
 	return 0;
 }

@@ -1,0 +1,2 @@
+﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(381,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (6.5Test.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  6.5Test.vcxproj -> E:\C语言编程文件\mysql\x64\Debug\Mysql.exe
