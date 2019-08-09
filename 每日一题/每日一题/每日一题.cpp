@@ -1576,7 +1576,7 @@ int main() {
 
 #endif
 
-
+#if 0
 #include<iostream>
 using namespace std;
 
@@ -1600,5 +1600,46 @@ int main(){
 
 
 
+	return 0;
+}
+#endif
+
+#include<assert.h>
+void Swap(int* right,int* left){
+
+	int temp = *left;
+	*left = *right;
+	*right = temp;
+
+}
+void Func(int** temp){
+
+	*temp = (int *)malloc(sizeof(int));
+	if (*temp == NULL){
+		assert(1);
+		return;
+	}
+	**temp = 20;
+	return;
+
+
+}
+
+int main(){
+
+	int *ptr = NULL;
+	//int *ptr1 = 1;
+
+	/*Func(&ptr);
+	printf("%d\n", *ptr);*/
+
+	int left = 10, right = 20;
+	//½»»»º¯Êý
+	Swap(&left, &right);
+
+
+	//char *str[4] = { "hello", "world", "ni", "hao" };
+
+	//*str[1] = "nihao";
 	return 0;
 }
