@@ -1604,6 +1604,8 @@ int main(){
 }
 #endif
 
+#if 0
+
 #include<assert.h>
 void Swap(int* right,int* left){
 
@@ -1643,3 +1645,74 @@ int main(){
 	//*str[1] = "nihao";
 	return 0;
 }
+#endif
+
+
+
+#if 0
+
+typedef struct Node{
+	 int data;
+	 struct Node *next;
+}Node,*pNode;
+
+//#pragma pack(1)
+struct Test{
+	int a;			//4
+	char b;			//1
+	double c;		//8
+	char d;			//1
+};
+
+void Pushback(pNode Head,int _data){
+
+	pNode pNew = (pNode)malloc(sizeof(Node));
+	pNew->data = _data;
+	pNew->next = NULL;
+
+	pNode temp = Head;
+
+	while (temp->next){
+		temp = temp->next;
+	}
+
+	temp->next = pNew;
+	return;
+}
+int main(){
+	Node Head = { -1, NULL };
+
+	Pushback(&Head, 1);
+
+	//Test test;
+	//sizeof(test);
+	return 0;
+}
+#endif 
+
+#include<string.h>
+int main(){
+	char ch;
+	int k, count[26] = { 0 };//将count的26个单元赋初值为0
+	ch = getchar();
+	while (ch != '\n') {
+
+		if (islower(ch)) {
+			count[ch - 'a']++;
+		}
+
+		if (isupper(ch)){
+			count[ch - 'A']++;
+		}
+		ch = getchar();
+	}
+	for (k = 0; k < 26; k++) {
+		printf("you'v pressed %d %c\n", count[k], 'A' + k);
+	}
+}
+
+
+
+
+
+
