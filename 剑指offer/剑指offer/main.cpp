@@ -19,6 +19,7 @@
 #include<stack>
 using namespace std;
 
+#if 0
 class Mystring{
 public:
 	Mystring(char *str = NULL) :my_data(str){};
@@ -160,7 +161,7 @@ struct ListNode {
 		val(x), next(NULL) {
 	}
 };
-class Solution {
+class Solution1 {
 public:
 	stack<int> tack;;
 	vector<int> value;
@@ -188,28 +189,6 @@ public:
 		return value;
 	}
 };
-int main() {
-	int k = 0;
-
-	vector<vector<int>>arr(4);
-	for (int i = 0; i < 4; ++i)
-		arr[i].resize(4);
-
-	int arr1[][4] = { 1, 2, 8, 9, 2, 4, 9, 12, 4, 7, 10, 13, 6, 8, 11, 15 };
-
-	for (int i = 0; i < 4;i++)
-	for (int j = 0; j < 4; ++j)
-		arr[i][j] = arr1[i][j];
-
-	//cout<<Find(5, arr);
-	
-
-
-	char *str = " Helloword";
-	replaceSpace(str, strlen(str));
-	cout << str << endl;
-	return 0;
-}
 
 
 /*
@@ -227,7 +206,7 @@ struct TreeNode {
 	TreeNode(int x) : val(x), left(NULL), right(NULL) {}
 };
 
-class Solution {
+class Solution2 {
 public:
 	TreeNode* reConstructBinaryTree(vector<int> pre, vector<int> vin) {
 		//前序遍历序列    中序遍历序列
@@ -267,9 +246,11 @@ public:
 		return root;
 	}
 }; 
+#endif
 
 class Solution {
 public:
+#if 0
 	TreeNode* reConstructBinaryTree(vector<int> pre, vector<int> vin) {
 		//前序遍历序列    中序遍历序列
 		if (pre.empty() || vin.empty())
@@ -346,7 +327,143 @@ public:
 			root->right = ConstructBinaryTree(pre, vin, left_len + left_pre + 1, vin_index + 1, right_pre, right_vin);
 		return root;
 	}
+
+
+
+
+
+public:
+	void push(int node) {
+		stack1.push(node);
+	}
+
+	int pop() {
+		int ret;
+		if (stack2.empty()){
+			while (stack1.size()) {
+				stack2.push(stack1.top());
+				stack1.pop();
+			}
+		}
+		if (stack2.size() == 0)
+			throw new std::exception("queue is empty!!");
+		ret = stack2.top();
+		stack2.pop();
+		return ret;
+	}
+private:
+	stack<int> stack1;
+	stack<int> stack2;
+
+
+
+#endif
+
+	public:
+		int minNumberInRotateArray(vector<int> rotateArray) {
+			//二分查找法的一种变种
+			if (rotateArray.empty())
+				return 0;
+
+			int length = rotateArray.size();
+			int left = 0;
+			int right = length -1 ;
+			int mid;
+			while (rotateArray[left] >= rotateArray[right]) {
+				if (right - left == 1) {
+					mid = right;
+					break;
+				}
+				mid = left + (right - left) / 2;
+				if (rotateArray[mid] >= rotateArray[left]) {
+					left = mid;
+				}
+				else if (rotateArray[mid] <= rotateArray[right]) {
+					right = mid;
+				}
+			}
+			return rotateArray[mid];
+		}
+
+//------------------------------------------------------------------------
+		//整数的次方
+		bool g_input = false;        //全局的输正确错误标志位
+
+		bool equal(int num1, int num2) {
+			if (num1 - num2 > -0.0000001 && num1 - num2 < 0.0000001)
+				return true;
+			else
+				return false;
+		}
+		double Func(double base, unsigned int absexponent) {
+			double result = 1.0;
+			for (int i = 1; i <= absexponent; ++i) {
+				result *= base;
+			}
+			return result;
+		}
+		double Power(double base, int exponent) {
+
+			//每次标志位进来都要给置位
+			//1.判断是否有无错误的输出 ,让底数和0 做比较
+			//2.如果指数是负数的话我们就要取绝对值,不是就正常运行
+			//3.如果指数是负数的话,我们就要取倒数来运行
+
+			g_input = false;
+			double result = 0;
+			//0 的负数次方是没有意义的,0的n次方为0
+			if (equal(base, 0.0) && exponent < 0) {
+				g_input = true;
+				return 0.0;
+			}
+			unsigned int absexponent = (unsigned int)exponent;
+			if (exponent < 0) {
+				absexponent = -exponent;
+			}
+			result = Func(base, absexponent);
+			if (exponent < 0) {
+				result = 1 / result;
+			}
+
+			return result;
+		}
+
+//-------------------------------------------------------------------------
+
+		void swap(int& right, int &left) {
+			int temp = right;
+			right = left;
+			left = temp;
+		}
+		void reOrderArray(vector<int> &array) {
+			if (array.empty())
+				return;
+			int right = array.size()-1;
+			int left = 0;
+			while (left < right) {
+				while (left < right && (array[left] & 0x1) == 1) {
+					++left;
+				}
+				while (left < right && (array[right] & 0x1) == 0) {
+					right--;
+				}
+				if (left < right) {
+					swap(array[right], array[left]);
+				}
+			}
+		}
 };
+
+int main() {
+
+
+	Solution test;
+	vector<int> arr = { 1, 2, 3, 4, 5 ,6,7};
+	test.reOrderArray(arr);
+
+	return 0;
+}
+
 
 
 
