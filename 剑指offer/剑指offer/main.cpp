@@ -452,14 +452,110 @@ private:
 				}
 			}
 		}
+
+//-----------------------------------------
+		//二叉树的遍历的话,他们都需要找出根节点的位置,再去找出左右子树,这时候左右子树又是根节点
+		//递归处理这些问题,
+		bool VerifySquenceOfBST(vector<int> sequence) {
+			if (sequence.empty())
+				return false;
+			int root = sequence[sequence.size() - 1];        //根的节点
+			int length = sequence.size();
+			//1.寻找左右子树,标记左右子树结束的位置,就是右子树
+			//寻找左子树,左子树小于根节点
+
+			int i = 0;
+			for (; i < length - 1; i++) {
+				if (sequence[i] > root)
+					break;
+			}
+			//寻找右子树,右子树大于根节点
+			int j = i;
+			for (; j < length - 1; j++) {
+				//如果循环遍历的节点有小于根节点的那么肯定是错误的
+				if (sequence[j] < root)
+					return false;
+			}
+			if (i>0) {
+				//这时候左边的边界为---(0,i)
+				vector<int> arr2;
+				for (int k = 0; k < i; k++) {
+					arr2.push_back(sequence[k]);
+				}
+				bool left = VerifySquenceOfBST(arr2);
+
+			}
+			if (i < length - 1){
+				//这时候右边的边界为---(i + 1 , sequence.size() - 1 - i)
+				vector<int> arr3;
+				for (int k = i; k < length - 1; k++) {
+					arr3.push_back(sequence[k]);
+				}
+				bool right = VerifySquenceOfBST(arr3);
+			}
+
+
+			return (left && right);
+		}
+
+		struct RandomListNode {
+			int label;
+			struct RandomListNode *next, *random;
+			RandomListNode(int x) :
+				label(x), next(NULL), random(NULL) {
+			}
+		};
+
+
+		RandomListNode* Clone(RandomListNode* pHead)
+		{
+			RandomListNode* pnewNode = pHead;
+			//第一步创建出要复制的对象,第二步再将复制的节点之间断开连接
+			if (pHead == NULL) {
+				pHead = NULL;
+				return pHead;
+			}
+			//第一步
+			while (pnewNode) {
+
+				RandomListNode *ppnewNode = new RandomListNode(pnewNode->label);
+				ppnewNode->next = pnewNode->next;
+				pnewNode->next = ppnewNode;
+
+				pnewNode = ppnewNode->next;
+
+			}
+			pnewNode = pHead;
+			//第二步拆开原来的
+			while (pnewNode) {
+				RandomListNode *node = pnewNode->next;
+				if (pnewNode->random) {
+					node->random = pnewNode->random->next;
+				}
+				pnewNode = node->next;
+			}
+			RandomListNode *pCloneHead = pHead->next;
+			RandomListNode *tmp;
+			pnewNode = pHead;
+			while (pnewNode->next) {
+				tmp = pnewNode->next;
+				pnewNode->next = tmp->next;
+				pnewNode = tmp;
+			}
+
+			return pCloneHead;
+		}
 };
 
 int main() {
 
 
 	Solution test;
-	vector<int> arr = { 1, 2, 3, 4, 5 ,6,7};
-	test.reOrderArray(arr);
+	vector<int> arr = { 5, 7, 6, 9, 11, 10, 8 };
+	//test.reOrderArray(arr);
+	//vector<int>arr2(arr[0],arr[2]);
+
+	cout<<test.VerifySquenceOfBST(arr);
 
 	return 0;
 }
