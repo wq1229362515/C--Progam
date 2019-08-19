@@ -546,16 +546,88 @@ private:
 			return pCloneHead;
 		}
 };
+//
+//#if 0
+//class Test{
+//public:
+//	static Test* GetInstance() {
+//		return &m_instance;				//通过这个接口来实例化对象
+//	}
+//	void print() {
+//		cout << "print()" << endl;
+//	}
+//
+//private:
+//	Test(){};
+//	Test(Test &test) = delete;
+//	Test& operator=(const Test&) = delete;
+//
+//
+//	~Test(){};
+//	 static Test m_instance;			//定义了一个对象
+//};
+////定义的static成员在类中,但是不在
+//Test Test::m_instance;
+////
+////类型 作用域限定符使用这个对象
+//		Test* test;
+//		Test * test2 = test->GetInstance();
+////#endif
+
+
+
+
+#include<mutex>
+class Test2 {
+public:
+	static Test2* GetInstance() {
+		if (m_instance == nullptr) {
+			_mutex.lock();
+			if (m_instance == nullptr) {
+				m_instance = new Test2();
+			}
+			_mutex.unlock();
+		}
+		return m_instance;
+	}
+	void print() {
+		cout << "懒汉模式" << endl;
+	}
+	class  rabbles{
+		~rabbles() {
+			if (Test2::m_instance) {
+				delete Test2::m_instance;
+			}
+		}
+	};
+	static rabbles rabb;
+
+private:
+	Test2() {}
+	Test2(const Test2& test){}
+
+	static Test2* m_instance;
+	static mutex _mutex;
+
+	
+};
+Test2* Test2::m_instance = nullptr;
+mutex Test2::_mutex;
+//Test2::rabbles rabb;
 
 int main() {
 
 
-	Solution test;
-	vector<int> arr = { 5, 7, 6, 9, 11, 10, 8 };
-	//test.reOrderArray(arr);
-	//vector<int>arr2(arr[0],arr[2]);
 
-	cout<<test.VerifySquenceOfBST(arr);
+
+
+	Test2* test;
+	Test2* test2 = test->GetInstance();
+	test2->print();
+
+
+	int *temp = new int[10];
+	delete[] temp;
 
 	return 0;
 }
