@@ -246,11 +246,11 @@ public:
 		return root;
 	}
 }; 
-#endif
+
 
 class Solution {
 public:
-#if 0
+
 	TreeNode* reConstructBinaryTree(vector<int> pre, vector<int> vin) {
 		//前序遍历序列    中序遍历序列
 		if (pre.empty() || vin.empty())
@@ -357,7 +357,7 @@ private:
 
 
 
-#endif
+
 
 	public:
 		int minNumberInRotateArray(vector<int> rotateArray) {
@@ -615,19 +615,152 @@ Test2* Test2::m_instance = nullptr;
 mutex Test2::_mutex;
 //Test2::rabbles rabb;
 
+
+void SeqListALL(int *arr, int data,int length) {
+	if (arr == NULL) {
+		return;
+	}
+	int k = 0;
+	for (int i = 0; i < length; ++i) {
+		if (arr[i] != data) {
+			arr[k++] = arr[i];
+		}
+	}
+}
+
+#endif
+#include<assert.h>
+typedef int SLDataType;
+
+
+typedef struct Slist {
+	SLDataType _data;
+	struct Slist *next;
+};
+/*
+	链表在初始化的时候将其置空就行了
+	在进行尾插的时候其实传递的是那个头节点,
+	链表需要遍历节点进行尾插,尾删
+*/
+void SlistInit(Slist* pHead) {
+
+	pHead = NULL;
+}
+void SlistPushback(Slist** pHead, int data){
+	if (*pHead == NULL) {
+		*pHead = (Slist*)malloc(sizeof(Slist));
+		if (*pHead == NULL) {
+			return;
+		}
+		(*pHead)->_data = data;
+		(*pHead)->next = NULL;
+		return;
+	}
+	Slist* pNode = *pHead;
+	Slist* preNode = NULL;
+	while (pNode) {
+		preNode = pNode;
+		pNode = pNode->next;
+	}
+	Slist* pNewNode = (Slist*)malloc(sizeof(Slist));
+	pNewNode->_data = data;
+	preNode->next = pNewNode;
+	pNewNode->next = NULL;
+	return;
+}
+
+
+double add(double right,double left) {
+	return right + right;
+}
+int add(int right, int left) {
+	return right + right;
+}
+void TestFunc(int a) {
+	cout << "TestFunc()" << endl;
+}
+void TestFunc(double a = 10) {
+	cout << "TestFunc()" << endl;
+}
+stack<char> stak;
+bool isValid(string s) {
+	if (s.empty())
+		return NULL;
+	size_t length = s.size() - 1;
+	size_t i = 0;
+	for(i ;i<=length;++i) {
+		if (s[i] == ')' || s[i] == ']' || s[i] == '}') {
+			if (stak.empty())
+				return false;
+
+			if (s[i] == ')' && stak.top() == '(' ||
+				s[i] == ']' && stak.top() == '[' ||
+				s[i] == '}' && stak.top() == '{') {
+				
+				stak.pop();
+				continue;
+			}
+			else
+				return false;
+
+		}
+		if (s[i] == '(' || s[i] == '[' || s[i] == '{') {
+			stak.push(s[i]);
+		}
+	}
+	if (stak.empty())
+		return true;
+	else
+		return false;
+}
+void AdjustDown(int *arr ,int parent,int size) {
+		
+	//建立一个小堆,他们的父节点都比他们的子节点小
+
+	int child = 2 * parent + 1;
+	if (arr[parent] < arr[child])
+		return;
+
+	while (child <size) {
+		if (child+1 <size && arr[child] > arr[child + 1]) {
+			child = child + 1;
+		}
+		if (arr[child] < arr[parent]){
+			int temp = arr[child];
+			arr[child] = arr[parent];
+			arr[parent] = temp;
+
+		}
+		parent = child;
+		child = 2 * parent + 1;
+	}
+}
+
+//创建一个堆,使用向下调整法,从最后一个非叶子节点开始,向下调整的前提是我们已经的子树已经被
+//排好了
+void makeHeap(int *arr ,int size) {
+
+	for (int root = (size - 2) / 2; root >= 0; --root) {
+		AdjustDown(arr,root,size);
+	}
+	for (int i = 0; i < size; ++i) {
+		int temp = arr[0];
+		arr[0] = arr[size - i -1];
+		arr[size - i -1] = temp;
+		AdjustDown(arr, 0, size - i - 1);
+	}
+}
+
 int main() {
 
+/*	Slist* pHead = NULL;
 
+	SlistInit(pHead);
+	SlistPushback(&pHead, 1);
+	SlistPushback(&pHead, 2);*/
 
-
-
-	Test2* test;
-	Test2* test2 = test->GetInstance();
-	test2->print();
-
-
-	int *temp = new int[10];
-	delete[] temp;
+	int arr[] = {3,19,22,14,15,7,1,2};
+	makeHeap(arr, sizeof(arr)/sizeof(arr[0]));
 
 	return 0;
 }
