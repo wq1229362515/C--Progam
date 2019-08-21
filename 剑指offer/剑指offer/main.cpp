@@ -751,6 +751,16 @@ void makeHeap(int *arr ,int size) {
 	}
 }
 
+class father {
+public:
+	father(int a) :_a(a){}
+	int _a;
+};
+
+class son: public father {
+public:
+	son(int a) :father(a){}
+};
 int main() {
 
 /*	Slist* pHead = NULL;
@@ -762,6 +772,13 @@ int main() {
 	int arr[] = {3,19,22,14,15,7,1,2};
 	makeHeap(arr, sizeof(arr)/sizeof(arr[0]));
 
+	string str1("124");
+	const char* str = str1.c_str();
+	vector<int> ret;
+	
+	son a(1);
+
+	cout << a._a << endl;
 	return 0;
 }
 
