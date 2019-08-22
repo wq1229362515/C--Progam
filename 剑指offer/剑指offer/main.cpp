@@ -753,32 +753,156 @@ void makeHeap(int *arr ,int size) {
 
 class father {
 public:
-	father(int a) :_a(a){}
+	father(int a = 1):_a(a){}
+	virtual void print() {
+		cout << "father()" << endl;
+	}
+	void print2() {
+		cout << "print" << endl;
+	}
+	void display() {
+		cout << _a << endl;
+	}
 	int _a;
 };
 
 class son: public father {
 public:
-	son(int a) :father(a){}
+	son():father(3){}
+	virtual void print() {
+		cout << "son()" << endl;
+	}
+	void display() {
+		cout << _a << endl;
+	}
+	void print2() {
+		cout << "printf2" << endl;
+	}
+	//int _a = 4;
+}; 
+
+
+class a
+{
+public:
+	int _a;
 };
+
+class b :virtual public a
+{
+public:
+	int _b;
+};
+class c :virtual public a
+{
+public:
+	int _c;
+};
+class d :public b, public c
+{
+public:
+	int _d;
+};
+
+
+
+string str;
+int i = 0;
+typedef struct TreeNode{
+	struct TreeNode* lchild, *rchild;
+	char val;
+	TreeNode(char c) :lchild(NULL), rchild(NULL), val(c){}
+}TreeNode;
+TreeNode* CreateNode(TreeNode* root) {
+	char c = str[i++];
+	if (c == '#')
+		return NULL;
+	root = new TreeNode(c);
+	root->lchild = CreateNode(root->lchild);
+	root->rchild = CreateNode(root->lchild);
+	return root;
+}
+void inoderNode(TreeNode* root) {
+	if (root == NULL)
+		return;
+	inoderNode(root->lchild);
+	cout << root->val << " ";
+	inoderNode(root->rchild);
+
+}
+
+
+class Solution {
+public:
+	vector<int>arr;
+	vector<int> twoSum(vector<int>& nums, int target) {
+		if (nums.empty())
+			return arr;
+		for (int i = 0; i < nums.size(); ++i) {
+			for (int j = i+1; j < nums.size(); ++j) {
+				if ( nums[i] +nums[j] == target ) {
+					arr.push_back(i);
+					arr.push_back(j);
+					break;
+					return arr;
+				}
+			}
+		}
+	}
+
+
+	int NumberOf1Between1AndN_Solution(int n)
+	{
+		int count = 0;
+		for (int i = 1; i <= n; ++i) {
+			int temp = i;
+			while (temp) {
+				if ((temp % 10) == 1) {
+					count++;
+				}
+				temp = temp / 10;
+			}
+		}
+		return  count;
+	}
+};
+
+
+#include <iostream>
+using namespace std;
+
+class A{
+public:
+	int n;
+	A(int n) :n(n){}
+	void display(){ cout << "Class A: n=" << n << endl; }
+};
+
+class B : public A{
+public:
+	B(int n) :A(n){}
+	void display(){ cout << "Class B: n=" << n << endl; }
+};
+
+class C : public A{
+public:
+	C(int n) :A(n){}
+	void display(){ cout << "Class C: n=" << n << endl; }
+};
+
 int main() {
-
-/*	Slist* pHead = NULL;
-
-	SlistInit(pHead);
-	SlistPushback(&pHead, 1);
-	SlistPushback(&pHead, 2);*/
-
-	int arr[] = {3,19,22,14,15,7,1,2};
-	makeHeap(arr, sizeof(arr)/sizeof(arr[0]));
-
-	string str1("124");
-	const char* str = str1.c_str();
-	vector<int> ret;
 	
-	son a(1);
+	Solution test;
+	test.NumberOf1Between1AndN_Solution(5);
+	father* s1 = new son;
+	//关于静态绑定和动态绑定
+	//这个语句在编译期间就会去做,属于静态绑定,因为他并不满足多态的条件,
+	//所以他会调用自己的实现接口,在编译期间编译器将他当做了father的对象,也就是说为什么你son不能被father赋值的缘故
 
-	cout << a._a << endl;
+	//静态绑定,
+
+
+	
 	return 0;
 }
 
