@@ -806,7 +806,7 @@ public:
 
 
 
-string str;
+string str("ABD##E##CF###");
 int i = 0;
 typedef struct TreeNode{
 	struct TreeNode* lchild, *rchild;
@@ -890,17 +890,88 @@ public:
 	void display(){ cout << "Class C: n=" << n << endl; }
 };
 
+
+
+int cc = 0;
+int Func( TreeNode *root,int k) {
+
+	if (root == NULL) {
+		return 0;
+	}
+	if (k == 1) {
+		cc++;
+	}
+	Func(root->lchild, k - 1);
+	Func(root->rchild, k - 1);
+
+	return cc;
+}
+
+TreeNode* buildTree(vector<int>& inorder, vector<int>& postorder) {
+
+	if (inorder.empty() || postorder.empty())
+		return NULL;
+
+	//左树的中序遍历与后序遍历
+	vector<int> left_in, left_po;
+	vector<int> right_in, right_po;
+
+	//找到中序遍历的中间节点
+	int index = postorder[postorder.size() - 1];
+	for (int i = 0; i < postorder.size(); ++i) {
+		if (inorder[i] == index) {
+			index = i;
+			break;
+		}
+	}
+
+	//创建节点
+	TreeNode* root = new TreeNode(postorder[postorder.size() - 1]);
+
+	//左树结构
+	//左树的结构
+	for (int i = 0; i < index; ++i) {
+		left_in.push_back(inorder[i]);
+		left_po.push_back(postorder[i]);
+	}
+	//右树的结构,中序
+	for (int i = index + 1; i < postorder.size(); ++i) {
+		right_in.push_back(inorder[i]);
+	}
+	//右树的后序
+	for (int i = index; i < postorder.size() - 1; ++i) {
+		right_po.push_back(postorder[i]);
+	}
+
+
+
+
+	root->lchild = buildTree(left_in, left_po);
+	root->rchild = buildTree(right_in, right_po);
+
+	return root;
+
+}
+
+#include <string>
 int main() {
 	
-	Solution test;
-	test.NumberOf1Between1AndN_Solution(5);
-	father* s1 = new son;
-	//关于静态绑定和动态绑定
-	//这个语句在编译期间就会去做,属于静态绑定,因为他并不满足多态的条件,
-	//所以他会调用自己的实现接口,在编译期间编译器将他当做了father的对象,也就是说为什么你son不能被father赋值的缘故
+	//Solution test;
+	//test.NumberOf1Between1AndN_Solution(5);
+	//father* s1 = new son;
+	////关于静态绑定和动态绑定
+	////这个语句在编译期间就会去做,属于静态绑定,因为他并不满足多态的条件,
+	////所以他会调用自己的实现接口,在编译期间编译器将他当做了father的对象,也就是说为什么你son不能被father赋值的缘故
 
-	//静态绑定,
-
+	////静态绑定,
+	
+	
+	TreeNode *root = NULL;
+	
+		root = CreateNode(root);
+		inoderNode(root);
+		cout << endl;
+		cout<<Func(root, 3);
 
 	
 	return 0;

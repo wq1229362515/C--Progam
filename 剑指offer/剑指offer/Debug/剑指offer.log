@@ -2,4 +2,7 @@
 e:\c语言编程文件\剑指offer\剑指offer\main.cpp(639): warning C4091: “typedef ”: 没有声明变量时忽略“Slist”的左侧
 e:\c语言编程文件\剑指offer\剑指offer\main.cpp(841): warning C4018: “<”: 有符号/无符号不匹配
 e:\c语言编程文件\剑指offer\剑指offer\main.cpp(842): warning C4018: “<”: 有符号/无符号不匹配
+e:\c语言编程文件\剑指offer\剑指offer\main.cpp(921): warning C4018: “<”: 有符号/无符号不匹配
+e:\c语言编程文件\剑指offer\剑指offer\main.cpp(938): warning C4018: “<”: 有符号/无符号不匹配
+e:\c语言编程文件\剑指offer\剑指offer\main.cpp(942): warning C4018: “<”: 有符号/无符号不匹配
   剑指offer.vcxproj -> E:\C语言编程文件\剑指offer\Debug\剑指offer.exe
