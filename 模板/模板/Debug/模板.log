@@ -1,3 +1,5 @@
-﻿  模板.cpp
-e:\c语言编程文件\模板\模板\模板.cpp(115): warning C4715: “IsPODType”: 不是所有的控件路径都返回值
-  模板.vcxproj -> E:\C语言编程文件\模板\Debug\模板.exe
+﻿  vector.cpp
+e:\c语言编程文件\模板\模板\vector.cpp(58): error C2782: “T add(T,T)”: 模板 参数“T”不明确
+          e:\c语言编程文件\模板\模板\vector.cpp(48) : 参见“add”的声明
+          可能是“double”
+          或       “int”

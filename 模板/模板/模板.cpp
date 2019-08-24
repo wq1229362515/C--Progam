@@ -106,22 +106,30 @@ private:
 	char *_str;
 };
 
-bool IsPODType(const string& type) {
-	string strType[] = { "char", "int", "long long", "float" };
-	for (auto e : strType) {
-		if (e == type)
-			return true;
-	}
-}
+//bool IsPODType(const string& type) {
+//	string strType[] = { "char", "int", "long long", "float" };
+//	for (auto e : strType) {
+//		if (e == type)
+//			return true;
+//	}
+//}
 
 
 
+//类型萃取就是类模板特化的应用
 template<class T>
 //通用拷贝函:任意的类型都可以进行拷贝
 void Copy(T* dst, T* src, size_t size) {
 	//内置类型,自定义类型需要进行区分
-	typeid(T).name();	//"int" "class Date" 类型转换成字符串
 	//枚举的方法,比较繁琐   	if(IsPODType(typeid(T).name())){
+
+	
+	//采用类型萃取的方法
+	//第一次进来的时候我们编译器已经对这个类型做出了处理是一个int,这时候走的特化版本
+	//template<>
+	/*struct TypeTraits<int> {
+		typedef TrueType  IsPODType	
+	}*/
 	if (TypeTraits<T>::IsPODType::Get()) {
 		//将地址的内容直接拷贝,但是地址的内容里面其实还是地址
 		//内存泄露
@@ -138,7 +146,8 @@ void Copy(T* dst, T* src, size_t size) {
 		}
 	}
 }
-
+//这两个类里面都有静态的成员函数,这时候调用一下,就可以完成这个区分,在编译期间我们的编译器就已经
+//将T的类型做出了区分
 struct FalseType {
 	static bool Get() {
 		return false;
@@ -149,10 +158,19 @@ struct TrueType {
 		return true;
 	}
 };
+
+//类型模板
 template<class T> 
 struct TypeTraits {
+	//给这个IsPODType 取了一个别名,这样的话IsPODTYpe可以使falsetype,也可以是truetype
+	//falseType --- 不是内置类型
+	//trueType 就是一个内置的类型,就是我们特化的处理方式
+	//是一个结构体TypeTraits模板` 
 	typedef FalseType IsPODType;
 };
+
+
+//类型模板的特化
 template<>
 struct TypeTraits<int> {
 	typedef TrueType IsPODType;
@@ -163,26 +181,27 @@ template<>
 struct TypeTraits<long> {
 	typedef TrueType IsPODType;
 };
+
+
 /*
 		
 	
 */
+
+
+#include"head.hpp"
+
+
 int main() {
 
-	Date<int, int> arr1;
-	Date<int, char> arr2;
-	Date<char, char> arr3;
-	Date<int*, char*>arr4;
-	int array1[] = { 1, 2, 3, 4, 5 };
-	int array2[sizeof(array1) / sizeof(array1[0])];
-	Copy(array2, array1, 5);
+	A<int> a;
+
+
+	a.Func();
 
 
 
-	String str1[] = { "1234", "124","55" };
-	String str5[3];
-	Copy(str5, str1, 3);
-	
+
 	return 0;
 }
 
