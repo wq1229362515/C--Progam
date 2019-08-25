@@ -953,7 +953,96 @@ TreeNode* buildTree(vector<int>& inorder, vector<int>& postorder) {
 
 }
 
+
+class Solution1 {
+	int GetFirstK(vector<int> data, int k, int start, int end) {
+		if (start > end)
+			return -1;
+		int midindex = (start + end) / 2;
+		int middata = data[midindex];
+
+		if (middata == k) {
+			if ((midindex >0 && data[midindex - 1] != k) || midindex == 0)
+				return midindex;
+			else
+				end = midindex - 1;
+		}
+		else if (middata > k) {
+			end = midindex - 1;
+		}
+		else start = midindex + 1;
+		return GetFirstK(data, k, start, end);
+	}
+	int GetLastK(vector<int> data, int k, int start, int end) {
+		if (start >end)
+			return -1;
+		int midindex = (start + end) / 2;
+		int middata = data[midindex];
+
+		if (middata == k) {
+			if ((midindex >0 && data[midindex + 1] != k) || midindex == data.size() - 1) {
+				return midindex;
+			}
+			else
+				start = midindex + 1;
+		}
+		if (middata >k) {
+			end = midindex - 1;
+		}
+		else {
+			start = midindex + 1;
+		}
+		return GetLastK(data, k, start, end);
+	}
+
+	int GetNumberOfK(vector<int> data, int k) {
+
+		if (data.empty())
+			return 0;
+		int count = 0;
+		//利用二分法找第一个K和最后一个K出现的坐标,
+		//二分法的复杂度为O(logN)
+		/*
+		for(auto e: data) {
+		if(k == e) {
+		count++;
+		}
+		}
+		*/
+		int first = GetFirstK(data, k, 0, data.size() - 1);
+		int last = GetLastK(data, k, 0, data.size() - 1);
+
+		if (first > -1 && last >-1)
+			count = last - first + 1;
+
+		return count;
+	}
+};
+
 #include <string>
+//二维数字寻找
+bool Find(int target, vector<vector<int> > array) {
+
+	int row = array.size();
+	int col = array[0].size() - 1;
+	int temprow = 0;
+	if (row && col) {
+		while (temprow < array.size() && col >= 0) {
+			if (array[temprow][col] > target) {
+				col--;
+				continue;
+			}
+			if (array[temprow][col] < target) {
+				temprow++;
+				continue;
+			}
+			if (array[temprow][col] == target)
+				return true;
+		}
+	}
+	return false;
+
+}
 int main() {
 	
 	//Solution test;
@@ -966,14 +1055,8 @@ int main() {
 	////静态绑定,
 	
 	
-	TreeNode *root = NULL;
-	
-		root = CreateNode(root);
-		inoderNode(root);
-		cout << endl;
-		cout<<Func(root, 3);
-
-	
+	vector<vector<int>>arr = { {-5} };
+	Find(-5, arr);
 	return 0;
 }
 

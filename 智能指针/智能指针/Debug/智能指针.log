@@ -1,0 +1,4 @@
+﻿  main.cpp
+e:\c语言编程文件\智能指针\智能指针\main.cpp(45): warning C4305: “参数”: 从“__int64”到“unsigned int”截断
+e:\c语言编程文件\智能指针\智能指针\main.cpp(45): warning C4309: “参数”: 截断常量值
+  智能指针.vcxproj -> E:\C语言编程文件\智能指针\Debug\智能指针.exe
