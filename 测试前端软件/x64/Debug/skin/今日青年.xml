@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Window size="800,600"> <!-- 窗口的初始尺寸 -->
+    <Font name="楷体" size="60" default="true" />
+	<HorizontalLayout bkcolor="#c3ab7958"> <!-- 整个窗口的背景 --ARGB 透明度|红色|绿色|蓝色-->
+      <Button name="btnHello" text="今日青年"/> <!-- 按钮的属性，如名称、文本 -->
+		
+	</HorizontalLayout>
+</Window>

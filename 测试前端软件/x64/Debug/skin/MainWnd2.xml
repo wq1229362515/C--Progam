@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<Window size="980,698">
+    <VerticalLayout width="980" height="698" bkcolor="#FFFFC057">
+        <HorizontalLayout width="978" height="40" bkcolor="#FFFFC057" bkcolor2="#00008000">
+            <Button text="最小化" float="true" pos="830,1,0,0" width="73" height="39" bkcolor="#FF808000" bkcolor2="#00FF0000" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" align="center" />
+            <Button text="关闭" float="true" pos="904,1,0,0" width="73" height="39" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" align="center" />
+        </HorizontalLayout>
+        <Edit name="商品名字" float="true" pos="148,98,0,0" width="66" height="39" bkcolor="#FFFFFFFF" textpadding="4,3,4,3" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" />
+        <Edit name="剩余" float="true" pos="367,99,0,0" width="66" height="39" bkcolor="#FFFFFFFF" textpadding="4,3,4,3" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" />
+        <Edit float="true" pos="657,99,0,0" width="66" height="39" bkcolor="#FFFFFFFF" textpadding="4,3,4,3" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" />
+        <Label text=" 商品名称" float="true" pos="25,102,0,0" width="84" height="30" bkcolor="#FFFFFFA0" bkcolor2="#00008000" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" />
+        <Label text=" 库存剩余" float="true" pos="260,103,0,0" width="84" height="30" bkcolor="#FFFF8000" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" />
+        <Button text="查询" float="true" pos="533,99,0,0" width="68" height="41" bkcolor="#FFFF8000" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" align="center" />
+        <List float="true" pos="3,150,0,0" width="953" height="461" itemtextcolor="#FF000000" itemselectedtextcolor="#FF000000" itemselectedbkcolor="#FFC1E3FF" itemhottextcolor="#FF000000" itemhotbkcolor="#FFE9F5FF" itemdisabledtextcolor="#FFCCCCCC" itemdisabledbkcolor="#FFFFFFFF">
+            <ListHeader width="953" height="8" />
+        </List>
+        <Edit float="true" pos="174,634,0,0" width="86" height="45" bkcolor="#FFFFFFFF" textpadding="4,3,4,3" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" />
+        <Button text="确认输出" float="true" pos="397,639,0,0" width="94" height="38" bkcolor="#FFC08000" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" align="center" />
+        <Button text="取消" float="true" pos="543,640,0,0" width="94" height="38" bkcolor="#FFC09A00" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" align="center" />
+        <Label text="  总价格" float="true" pos="61,634,0,0" width="82" height="45" bkcolor="#FFC09A00" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" />
+    </VerticalLayout>
+</Window>
