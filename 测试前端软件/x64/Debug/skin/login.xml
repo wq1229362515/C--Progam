@@ -9,7 +9,7 @@
         <Button name="Button_LOGIN" text="登 录" float="true" pos="378,299,0,0" width="99" height="32" bkimage="Button_Hot.png" bkcolor="#FF00C09D" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" align="center" normalimage="Button_Non.png" pushedimage="button_down.bmp" />
         <Label name="Label_Picture" float="true" pos="177,169,0,0" width="93" height="97" bkimage="C:\Users\12293\Desktop\前端备份\用户.PNG" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" />
         <Label name="Label_ITEM" text=" 收 银 管 理 系 统 V1.0" float="true" pos="338,89,0,0" width="183" height="38" bkimage="Button_Non.png" bkcolor="#FF00FFFF" bkcolor2="#00C0DCC0" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" />
-        <Edit name="Edit_Uer" text="wq" tooltip="输入用户名" float="true" pos="312,165,0,0" width="226" height="36" bkcolor="#FFFFFFFF" textpadding="4,3,4,3" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" />
+        <Edit name="Edit_Uer" text="rose" tooltip="输入用户名" float="true" pos="312,165,0,0" width="226" height="36" bkcolor="#FFFFFFFF" textpadding="4,3,4,3" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" />
         <Edit name="Edit_MI" text="0" tooltip="输入用户密码" float="true" pos="312,226,0,0" width="226" height="36" bkcolor="#FFFFFFFF" textpadding="4,3,4,3" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" password="true" />
     </VerticalLayout>
 </Window>

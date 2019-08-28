@@ -6,24 +6,30 @@
             <Button name="BTN_CLOSE" text="关闭" float="true" pos="900,0,0,0" width="80" height="35" bkcolor="#FF5780FF" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" align="center" />
         </HorizontalLayout>
         <HorizontalLayout width="980" height="46">
-            <Option name="BTN_EMP" text="员工操作" float="true" pos="0,0,0,0" width="90" height="45" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" align="center" hotimage="按钮.PNG" pushedimage="按钮按下.PNG" group="true" selected="true" />
-            <Option name="BTN_GOODS" text="商品操作" float="true" pos="90,0,0,0" width="90" height="45" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" align="center" hotimage="按钮.PNG" pushedimage="按钮按下.PNG" group="true" />
+            <Option name="BTN_EMP" text="员工操作" float="true" pos="795,0,0,0" width="90" height="46" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" align="center" hotimage="按钮.PNG" pushedimage="按钮按下.PNG" group="true" selected="true" />
+            <Option name="BTN_GOODS" text="商品操作" float="true" pos="882,0,0,0" width="90" height="46" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" align="center" hotimage="按钮.PNG" pushedimage="按钮按下.PNG" group="true" />
+            <Label text="输入姓名" float="true" pos="0,4,0,0" width="88" height="42" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" />
+            <Label text="性别选项" float="true" pos="103,4,0,0" width="88" height="42" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" />
+            <Label text="输入生日" float="true" pos="260,4,0,0" width="88" height="42" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" />
+            <Label text="职位选项" float="true" pos="382,4,0,0" width="88" height="42" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" />
+            <Label text="电话" float="true" pos="544,4,0,0" width="88" height="42" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" />
+            <Label text="薪资" float="true" pos="681,4,0,0" width="88" height="42" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" />
         </HorizontalLayout>
         <TabLayout name="TABLAYOUT">
             <VerticalLayout width="951" height="594">
-                <Edit name="username" text="page1" width="90" height="40" bkcolor="#FFFFFFFF" textpadding="4,3,4,3" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" />
-                <Combo name="Combo_sex" float="true" pos="100,0,0,0" width="130" height="40" itemtextcolor="#FF000000" itemselectedtextcolor="#FF000000" itemselectedbkcolor="#FFC1E3FF" itemhottextcolor="#FF000000" itemhotbkcolor="#FFE9F5FF" itemdisabledtextcolor="#FFCCCCCC" itemdisabledbkcolor="#FFFFFFFF" normalimage="Combo_nor.bmp" hotimage="Combo_over.bmp" pushedimage="Combo_over.bmp" dropboxsize="0,150">
-                    <ListLabelElement text="男"/>
+                <Edit name="username" width="90" height="40" bkcolor="#FFFFFFFF" textpadding="4,3,4,3" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" />
+                <Combo name="Combo_sex" text="男" float="true" pos="100,0,0,0" width="130" height="40" itemtextcolor="#FF000000" itemselectedtextcolor="#FF000000" itemselectedbkcolor="#FFC1E3FF" itemhottextcolor="#FF000000" itemhotbkcolor="#FFE9F5FF" itemdisabledtextcolor="#FFCCCCCC" itemdisabledbkcolor="#FFFFFFFF" normalimage="Combo_nor.bmp" hotimage="Combo_over.bmp" pushedimage="Combo_over.bmp" dropboxsize="0,150">
+                    <ListLabelElement text="男" selected = "true"/>
                     <ListLabelElement text="女"/>
                 </Combo>
-                <Combo name="Combo_Position" float="true" pos="379,0,0,0" width="130" height="41" itemtextcolor="#FF000000" itemselectedtextcolor="#FF000000" itemselectedbkcolor="#FFC1E3FF" itemhottextcolor="#FF000000" itemhotbkcolor="#FFE9F5FF" itemdisabledtextcolor="#FFCCCCCC" itemdisabledbkcolor="#FFFFFFFF" normalimage="Combo_nor.bmp" hotimage="Combo_over.bmp" pushedimage="Combo_over.bmp" dropboxsize="0,150">
+                <Combo name="Combo_Position" text="管理员" float="true" pos="379,0,0,0" width="130" height="41" itemtextcolor="#FF000000" itemselectedtextcolor="#FF000000" itemselectedbkcolor="#FFC1E3FF" itemhottextcolor="#FF000000" itemhotbkcolor="#FFE9F5FF" itemdisabledtextcolor="#FFCCCCCC" itemdisabledbkcolor="#FFFFFFFF" normalimage="Combo_nor.bmp" hotimage="Combo_over.bmp" pushedimage="Combo_over.bmp" dropboxsize="0,150">
                      <ListLabelElement text="售货员"/>
-                    <ListLabelElement text="管理员"/>
+                    <ListLabelElement text="管理员"	selected="true"/>
                 </Combo>
-                <Edit name="birthday" text="1997-05-13" float="true" pos="258,1,0,0" width="90" height="41" bkcolor="#FFFFFFFF" textpadding="4,3,4,3" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" />
-                <Edit name="phone_number" text="18291447824" float="true" pos="542,1,0,0" width="98" height="41" bkcolor="#FFFFFFFF" textpadding="4,3,4,3" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" />
-                <Edit name="slary" text="6000" float="true" pos="680,2,0,0" width="98" height="41" bkcolor="#FFFFFFFF" textpadding="4,3,4,3" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" />
-                <List name="List_Employee" float="true" pos="7,64,0,0" width="778" height="385"itemalign="center" bkcolor="#FFFFFFFF" itemtextcolor="#FF000000" itembkcolor="#FFE2DDDF" itemselectedtextcolor="#FF000000" itemselectedbkcolor="#FFC1E3FF" itemhottextcolor="#FF000000" itemhotbkcolor="#FFE9F5FF" itemdisabledtextcolor="#FFCCCCCC" itemdisabledbkcolor="#FFFFFFFF" headerbkimage="List/list_header_bg.png">
+                <Edit name="birthday" float="true" pos="258,1,0,0" width="90" height="41" bkcolor="#FFFFFFFF" textpadding="4,3,4,3" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" />
+                <Edit name="phone_number" float="true" pos="542,1,0,0" width="98" height="41" bkcolor="#FFFFFFFF" textpadding="4,3,4,3" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" />
+                <Edit name="slary" float="true" pos="680,2,0,0" width="98" height="41" bkcolor="#FFFFFFFF" textpadding="4,3,4,3" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" />
+                <List name="List_Employee" float="true" pos="7,64,0,0" itemalign="center" width="778" height="385" bkcolor="#FFFFFFFF" itemtextcolor="#FF000000" itembkcolor="#FFE2DDDF" itemselectedtextcolor="#FF000000" itemselectedbkcolor="#FFC1E3FF" itemhottextcolor="#FF000000" itemhotbkcolor="#FFE9F5FF" itemdisabledtextcolor="#FFCCCCCC" itemdisabledbkcolor="#FFFFFFFF" headerbkimage="List/list_header_bg.png">
                     <ListHeader name="domain" bkimage="List/list_header_bg.png">
                         <ListHeaderItem text="工号" width="110" height="21" minwidth="16" textcolor="#FF000000" sepwidth="1" align="center" hotimage="List/list_header_hot.png" pushedimage="List/list_header_pushed.png" sepimage="List/list_header_sep.png" />
                         <ListHeaderItem text="姓名" width="110" height="22" minwidth="16" textcolor="#FF000000" sepwidth="1" align="center" hotimage="List/list_header_hot.png" pushedimage="List/list_header_pushed.png" sepimage="List/list_header_sep.png" />
@@ -38,14 +44,28 @@
                     <ListLabelElement />
                     <ListLabelElement />
                     <ListLabelElement />
+                    <ListLabelElement />
+                    <ListLabelElement />
+                    <ListLabelElement />
+                    <ListLabelElement />
+                    <ListLabelElement />
+                    <ListLabelElement />
+                    <ListLabelElement />
+                    <ListLabelElement />
+                    <ListLabelElement />
+                    <ListLabelElement />
+                    <ListLabelElement />
+                    <ListLabelElement />
+                    <ListLabelElement />
                 </List>
                 <Button name="Button_SELECT" text="查询" float="true" pos="847,132,0,0" width="76" height="37" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" align="center" normalimage="Button_Non.png" pushedimage="button_down.bmp" />
                 <Button name="Button_INSERT" text="插入" float="true" pos="847,190,0,0" width="76" height="37" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" align="center" normalimage="Button_Non.png" pushedimage="button_down.bmp" />
                 <Button name="Button_UPDATE" text="更新" float="true" pos="847,259,0,0" width="76" height="37" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" align="center" normalimage="Button_Non.png" pushedimage="button_down.bmp" />
                 <Button name="Button_DROP" text="删除" float="true" pos="847,336,0,0" width="76" height="37" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" align="center" normalimage="Button_Non.png" pushedimage="button_down.bmp" />
                 <Button name="Button_RECORD" text="销售记录" float="true" pos="847,409,0,0" width="76" height="37" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" align="center" normalimage="Button_Non.png" pushedimage="button_down.bmp" />
-                <Combo name="Combo_SELECT" float="true" pos="836,77,0,0" width="86" height="30" itemtextcolor="#FF000000" itemselectedtextcolor="#FF000000" itemselectedbkcolor="#FFC1E3FF" itemhottextcolor="#FF000000" itemhotbkcolor="#FFE9F5FF" itemdisabledtextcolor="#FFCCCCCC" itemdisabledbkcolor="#FFFFFFFF" normalimage="Combo_nor.bmp" hotimage="Combo_over.bmp" pushedimage="Combo_over.bmp" dropboxsize="0,150">
-                    <ListLabelElement text="姓名"/>
+                <Combo name="Combo_SELECT" text="整体查询" float="true" pos="836,77,0,0" width="86" height="30" itemtextcolor="#FF000000" itemselectedtextcolor="#FF000000" itemselectedbkcolor="#FFC1E3FF" itemhottextcolor="#FF000000" itemhotbkcolor="#FFE9F5FF" itemdisabledtextcolor="#FFCCCCCC" itemdisabledbkcolor="#FFFFFFFF" normalimage="Combo_nor.bmp" hotimage="Combo_over.bmp" pushedimage="Combo_over.bmp" dropboxsize="0,150">
+                    <ListLabelElement text="整体查询" selected="true"/>
+					<ListLabelElement text="姓名"/>
                     <ListLabelElement text="性别" />
 					<ListLabelElement text="薪资"/>
                 </Combo>
