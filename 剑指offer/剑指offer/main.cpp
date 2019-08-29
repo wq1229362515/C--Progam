@@ -1,5 +1,3 @@
-
-
 /*
 	异常安全性 : 不破坏数据,不任何资源泄露    --内存泄露
 												资源泄露   
@@ -1017,6 +1015,22 @@ class Solution1 {
 
 		return count;
 	}
+public:
+	string ReverseSentence(string str) {
+		if (str.empty())
+			return str;
+		reverse(str.begin(), str.end());
+		auto start = str.begin();
+		auto end = str.begin();
+		for (size_t i = 0; i < str.size(); ++i) {
+			if (isspace(str[i])) {
+				reverse(start, end);
+				start = end + 1;
+			}
+			end++;
+		}
+		return str;
+	}
 };
 
 #include <string>
@@ -1043,8 +1057,31 @@ bool Find(int target, vector<vector<int> > array) {
 	return false;
 
 }
+class ss{
+public:
+	char a[3];
+	virtual void Func() {
+	}
+};
+int Test(int n, int m) {
+	if (n < 1 || m<1) return -1;
+	int* array = new int[n];
+	int i = -1, step = 0, count = n;
+	while (count>0){   
+		i++;          
+		if (i >= n) i = 0;  
+		if (array[i] == -1) continue; 
+		step++;                     
+		if (step == m) {               
+			array[i] = -1;
+			step = 0;
+			count--;
+		}
+	}
+	return i;
+}
 int main() {
-	
+
 	//Solution test;
 	//test.NumberOf1Between1AndN_Solution(5);
 	//father* s1 = new son;
@@ -1053,16 +1090,13 @@ int main() {
 	////所以他会调用自己的实现接口,在编译期间编译器将他当做了father的对象,也就是说为什么你son不能被father赋值的缘故
 
 	////静态绑定,
-	
-	
-	vector<vector<int>>arr = { {-5} };
-	Find(-5, arr);
+
+
+	string str("wonderful");
+	Solution1 test;
+	cout << test.ReverseSentence(str);
+
+	ss x;
+	cout << sizeof(x) << endl;
 	return 0;
 }
-
-
-
-
-
-
-
